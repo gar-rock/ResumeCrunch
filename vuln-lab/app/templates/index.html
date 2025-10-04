@@ -1,0 +1,193 @@
+ {% extends "/base/shell.html" %} {% block content %}
+
+<div class="p-4 bg-white block sm:flex items-center justify-between border-b border-gray-200 lg:mt-1.5 dark:bg-gray-800 dark:border-gray-700">
+    <div class="w-full mb-1">
+        <div class="mb-4">
+            <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">Resume Scoring & Analysis</h1>
+            <p class="text-gray-600 dark:text-gray-400">Upload your resumes and get AI-powered feedback to land your dream job</p>
+        </div>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<div class="px-4 pt-6">
+    <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
+        <!-- Main Content -->
+        <div class="bg-white shadow rounded-lg mb-4 p-6 dark:bg-gray-800">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold text-gray-900 dark:text-white">How ResumeCrunch Works</h2>
+                <div class="flex items-center">
+                    <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Step 1 -->
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full dark:bg-blue-900">
+                            <span class="text-blue-600 font-semibold dark:text-blue-300">1</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white">Upload Your Resumes</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Upload multiple resumes in a ZIP file. We support PDF, DOC, DOCX, and TXT formats.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full dark:bg-green-900">
+                            <span class="text-green-600 font-semibold dark:text-green-300">2</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white">Provide Job Description</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Paste the job description you're targeting. Our AI will analyze the key requirements and skills.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center w-10 h-10 bg-purple-100 rounded-full dark:bg-purple-900">
+                            <span class="text-purple-600 font-semibold dark:text-purple-300">3</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white">Get AI-Powered Analysis</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Our AI scores each resume against the job requirements and identifies gaps in your application.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center w-10 h-10 bg-orange-100 rounded-full dark:bg-orange-900">
+                            <span class="text-orange-600 font-semibold dark:text-orange-300">4</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white">Receive Improvement Tips</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Get specific suggestions on keywords, skills, and experiences to add to increase your chances.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="mt-8 text-center">
+                <a href="/resumes" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                    </svg> Start Analyzing Your Resumes
+                </a>
+            </div>
+        </div>
+
+        <!-- Feature Highlights -->
+        <div class="bg-white shadow rounded-lg mb-4 p-6 dark:bg-gray-800">
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Why Choose ResumeCrunch?</h2>
+
+            <div class="space-y-4">
+                <!-- Feature 1 -->
+                <div class="flex items-center space-x-3">
+                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-gray-700 dark:text-gray-300">ATS-Friendly Analysis</span>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="flex items-center space-x-3">
+                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-gray-700 dark:text-gray-300">Keyword Optimization</span>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="flex items-center space-x-3">
+                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-gray-700 dark:text-gray-300">Multiple Format Support</span>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="flex items-center space-x-3">
+                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-gray-700 dark:text-gray-300">Industry-Specific Insights</span>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="flex items-center space-x-3">
+                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-gray-700 dark:text-gray-300">Instant Feedback</span>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <div class="grid grid-cols-2 gap-4 text-center">
+                    <div>
+                        <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">95%</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Match Accuracy</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-green-600 dark:text-green-400">50K+</div>
+                        <div class="text-sm text-gray-600 dark:text-gray-400">Resumes Analyzed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Helps Section -->
+    <div class="bg-white shadow rounded-lg p-6 dark:bg-gray-800 mb-4">
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">What You'll Get</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Score Card -->
+            <div class="text-center">
+                <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 dark:bg-blue-900">
+                    <svg class="w-8 h-8 text-blue-600 dark:text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">Compatibility Score</h3>
+                <p class="text-gray-600 dark:text-gray-400">Get a percentage score showing how well your resume matches the job requirements.</p>
+            </div>
+
+            <!-- Missing Keywords -->
+            <div class="text-center">
+                <div class="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 dark:bg-yellow-900">
+                    <svg class="w-8 h-8 text-yellow-600 dark:text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">Missing Keywords</h3>
+                <p class="text-gray-600 dark:text-gray-400">Identify important keywords and skills that are missing from your resume.</p>
+            </div>
+
+            <!-- Improvement Tips -->
+            <div class="text-center">
+                <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 dark:bg-green-900">
+                    <svg class="w-8 h-8 text-green-600 dark:text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">Actionable Tips</h3>
+                <p class="text-gray-600 dark:text-gray-400">Receive specific suggestions on how to improve your resume for better results.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
