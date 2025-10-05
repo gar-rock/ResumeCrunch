@@ -102,30 +102,6 @@ def get(id):
         print(traceback.format_exc())
         return jsonify({"status":"ERROR"+e}),500
 
-@app.route('/set_cookie')
-def set_cookie():
-    value = request.args.get('value', 'default_value')
-    response = make_response("Cookie set!")
-    response.set_cookie('my_cookie', value)
-
-    # Cache the cookie value
-    cache.set('my_cookie', value)
-
-    return response
-
-@app.route('/get_cookie')
-def get_cookie():
-    # Try to get the cookie value from the cache
-    cached_value = cache.get('my_cookie')
-    if cached_value:
-        return f"Cached cookie value: {cached_value}"
-    else:
-        cookie_value = request.cookies.get('my_cookie')
-        if cookie_value:
-            return f"Cookie value: {cookie_value}"
-        else:
-            return "Cookie not found!"
-
 @app.route('/cached')
 @cache.cached(timeout=60)  # Cache for 60 seconds
 def cached_data():
@@ -136,9 +112,47 @@ def cached_data():
     return 'This data is cached for 60 seconds'
 
 @app.route("/")
-@cache.cached(timeout=50)
 def home():
-    return render_template("index.html")
+    # Get or create session ID from cookie
+    session_id = request.cookies.get('session_id')
+    
+    if not session_id:
+        # New session - create ID and initialize data
+        session_id = str(uuid4())
+        session_data = {
+            'session_id': session_id,
+            'created_at': datetime.datetime.now().isoformat(),
+            'visit_count': 1,
+            'last_visit': datetime.datetime.now().isoformat()
+        }
+        cache.set(f'session:{session_id}', session_data, timeout=3600)  # 1 hour timeout
+    else:
+        # Existing session - retrieve and update data
+        session_data = cache.get(f'session:{session_id}')
+        print()
+        print(session_data ) 
+        print()      
+        if session_data is None:
+            # Session expired or doesn't exist, create new one
+            session_data = {
+                'session_id': session_id,
+                'created_at': datetime.datetime.now().isoformat(),
+                'visit_count': 1,
+                'last_visit': datetime.datetime.now().isoformat()
+            }
+        else:
+            # Update existing session
+            session_data['visit_count'] = session_data.get('visit_count', 0) + 1
+            session_data['last_visit'] = datetime.datetime.now().isoformat()
+        
+        # Save updated session data back to cache
+        cache.set(f'session:{session_id}', session_data, timeout=3600)
+    
+    # Create response and set cookie
+    response = make_response(render_template("index.html"))
+    response.set_cookie('session_id', session_id, max_age=3600)  # 1 hour cookie
+    
+    return response
 
 @app.route("/help")
 def help():

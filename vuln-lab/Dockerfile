@@ -11,6 +11,5 @@ RUN pip install -r /app/requirements.txt
 
 ENV OPENAI_API_KEY="sk-svcacct--dfgdfgdfg"
 
-RUN pip freeze > req.txt
 
 CMD ["python3", "app.py"]
