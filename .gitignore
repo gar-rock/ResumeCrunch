@@ -2,6 +2,12 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyo
+*.pyd
+.Python
+*.so
+*.dll
+*.dylib
 
 # C extensions
 *.so
@@ -43,11 +49,15 @@ htmlcov/
 .coverage
 .coverage.*
 .cache
+.pytest_cache/
 nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
 .hypothesis/
+.pytest_cache/
+cover/
+*.coveragerc
 .pytest_cache/
 cover/
 
@@ -85,7 +95,9 @@ ipython_config.py
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
 #   intended to run in multiple environments; otherwise, check them in:
-# .python-version
+.python-version
+.pyenv/
+pyenv.cfg
 
 # pipenv
 #   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
@@ -121,12 +133,21 @@ celerybeat.pid
 
 # Environments
 .env
+.env.local
+.env.*.local
 .venv
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+venv*/
+virtualenv/
+.virtualenv/
+.python-version
+.tool-versions
+pyvenv.cfg
+pip-selfcheck.json
 
 # Spyder project settings
 .spyderproject
@@ -181,3 +202,5 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
+
+

