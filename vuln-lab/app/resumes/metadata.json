@@ -10,23 +10,137 @@
     "job_description": "As a full stack Senior Software Engineer, you will be joining an elite team of technical powerhouses within our Keeper Dev team. Play a pivotal role designing, developing and maintaining our internal support tools used by Keeper employees. You will work closely with cross-functional teams to deliver high-quality software solutions that meet both user and business requirements.\r\n\r\nResponsibilities\r\n\r\nOwn the ability to self-start and prioritize, plan, organize, and manage multiple tasks efficiently, in a demanding environment\r\nCollaborate with product managers, designers, and other engineers to define and implement software solutions\r\nDesign, Develop, and maintain secure and scalable solutions for Keeper\u2019s Support Tools\r\nUtilize Java, MySQL, AWS, JavaScript\r\nBalance multiple concurrent projects with varying priorities\r\nWrite clean, maintainable, and well documented code\r\nConduct code reviews\r\nTroubleshoot and debug issues to ensure the performance, reliability, and security of applications\r\nExcel at communicating with technical and non-technical teams\r\nStay up-to-date with emerging technologies and best practices in software development\r\nRequirements\r\n5+ years of professional experience in full-stack software development\r\nBachelor\u2019s or Master\u2019s degree in Computer Science or equivalent discipline or equivalent experience\r\nStrong experience with Java, JavaScript, HTML, CSS and popular frameworks/libraries (e.g., React, Angular, Vue.js).\r\nExperience with database design and management (MySQL)\r\nFamiliarity with cloud platforms (AWS)\r\nExcellent problem solving and communication skills\r\nProven ability to work in an agile development environment\r\nDue to this role\u2019s involvement in GovCloud, all applicants must be a US Person. A \u201cU.S. Person\u201d is defined as a U.S. citizen or a Lawful permanent resident (Green Card holder).\u201d",
     "scores": {
       "GarrisonLeRockResume.pdf": {
-        "overall_score": 57,
+        "overall_score": 61,
         "skills_match": 40,
-        "experience_match": 40,
+        "experience_match": 50,
         "education_match": 100,
         "keywords_found": 5,
-        "total_keywords": 12
+        "total_keywords": 9
       }
     },
-    "processing_start_time": "2025-10-04T20:50:09.521645",
-    "processing_end_time": "2025-10-04T20:50:45.689973",
-    "recommendations": "{\n  \"scores\": {\n    \"overall_score\": 57,\n    \"skills_match\": 40,\n    \"experience_match\": 40,\n    \"education_match\": 100,\n    \"keywords_found\": 5,\n    \"total_keywords\": 12\n  },\n  \"recommendations\": \"Your resume shows potential for the Keeper Dev full-stack role, but there\u2019s a noticeable gap in explicitly listing the core tech stack the job requires. To improve alignment, highlight hands-on experience with Java, JavaScript, HTML, CSS, and MySQL, and cite any work with React/Angular/Vue.js. If you have worked on internal tools or web apps using Java or JS-based stacks, add concrete projects and metrics (e.g., performance improvements, user adoption, or security improvements). Emphasize cross-functional collaboration, Agile experience, and code reviews. Consider adding a Projects or Experience blurb that maps to the job responsibilities (designing, developing, and maintaining secure, scalable internal tools on AWS with MySQL). Also, confirm your US Person status or eligibility for GovCloud, and clearly state citizenship or permanent residency on the resume if applicable. Finally, quantify achievements where possible (e.g., reduced deployment time, improved security posture, or automated workflows) to strengthen impact.}\""
+    "processing_start_time": "2025-10-04T22:23:10.060520",
+    "processing_end_time": "2025-10-04T22:23:35.207680",
+    "recommendations": "Your resume demonstrates strong security leadership and relevant cloud/DevOps experience, but it lacks explicit full-stack development in Java/JavaScript and MySQL, which are key for this Keeper role. To improve fit: - Add a concise \u201cFull-Stack Experience\u201d section or bullets that show direct work with Java, JavaScript, HTML/CSS, and a modern frontend framework (React/Angular/Vue). Include any MySQL or relational DB experience. - Highlight concrete, quantifiable outcomes from software development efforts (e.g., performance improvements, reduced defect rates, deployment speeds, security hardening metrics). - Reframe or add bullets that show collaboration with product managers, designers, and engineers in an agile environment, with code reviews and documentation. - Explicitly mention GovCloud eligibility or status (US Person) if applicable, since this is a compliance requirement. - Consider reorganizing to front-load relevant tech stack and project results, and add a few standalone projects or contributions that mirror Keeper\u2019s internal support tools and security-focused features. A targeted rewrite could convert security leadership into concrete full-stack product development impact that aligns with the job description."
   },
   "__MACOSX/._GarrisonLeRockResume.pdf": {
     "description": "MY RESUME",
     "size": 224796,
     "upload_time": "2025-10-04T20:47:52.067453",
     "upload_timestamp": 1759628872.067453,
+    "processed": false,
+    "uploaded": true,
+    "processing_status": "pending",
+    "job_description": "",
+    "scores": {},
+    "processing_start_time": null,
+    "processing_end_time": null
+  },
+  "GarrisonLeRockResume.docx": {
+    "description": "here are my resumes",
+    "size": 3481384,
+    "upload_time": "2025-10-04T22:17:38.430997",
+    "upload_timestamp": 1759634258.430997,
+    "processed": true,
+    "uploaded": true,
+    "processing_status": "completed",
+    "job_description": "As a full stack Senior Software Engineer, you will be joining an elite team of technical powerhouses within our Keeper Dev team. Play a pivotal role designing, developing and maintaining our internal support tools used by Keeper employees. You will work closely with cross-functional teams to deliver high-quality software solutions that meet both user and business requirements.\r\n\r\nResponsibilities\r\n\r\nOwn the ability to self-start and prioritize, plan, organize, and manage multiple tasks efficiently, in a demanding environment\r\nCollaborate with product managers, designers, and other engineers to define and implement software solutions\r\nDesign, Develop, and maintain secure and scalable solutions for Keeper\u2019s Support Tools\r\nUtilize Java, MySQL, AWS, JavaScript\r\nBalance multiple concurrent projects with varying priorities\r\nWrite clean, maintainable, and well documented code\r\nConduct code reviews\r\nTroubleshoot and debug issues to ensure the performance, reliability, and security of applications\r\nExcel at communicating with technical and non-technical teams\r\nStay up-to-date with emerging technologies and best practices in software development\r\nRequirements\r\n5+ years of professional experience in full-stack software development\r\nBachelor\u2019s or Master\u2019s degree in Computer Science or equivalent discipline or equivalent experience\r\nStrong experience with Java, JavaScript, HTML, CSS and popular frameworks/libraries (e.g., React, Angular, Vue.js).\r\nExperience with database design and management (MySQL)\r\nFamiliarity with cloud platforms (AWS)\r\nExcellent problem solving and communication skills\r\nProven ability to work in an agile development environment\r\nDue to this role\u2019s involvement in GovCloud, all applicants must be a US Person. A \u201cU.S. Person\u201d is defined as a U.S. citizen or a Lawful permanent resident (Green Card holder).\u201d",
+    "scores": {
+      "GarrisonLeRockResume.docx": {
+        "overall_score": 45,
+        "skills_match": 25,
+        "experience_match": 60,
+        "education_match": 70,
+        "keywords_found": 2,
+        "total_keywords": 9
+      }
+    },
+    "processing_start_time": "2025-10-04T22:21:25.705376",
+    "processing_end_time": "2025-10-04T22:22:01.603891",
+    "recommendations": "Your resume shows solid security, cloud (AWS), and full-stack exposure with 9+ years of experience, which is valuable. However, it does not clearly demonstrate the explicit full-stack Java stack the role calls for (Java, JavaScript, HTML/CSS, and a modern framework like React/Angular/Vue) or MySQL. To improve alignment with the Keeper Senior Software Engineer position, rewrite the resume to foreground: (1) direct full-stack development experience using Java and JavaScript, including any projects with React/Angular/Vue; (2) explicit MySQL database design/management work; (3) concrete, measurable outcomes from development work (e.g., performance improvements, reliability metrics, security incident reduction); (4) collaboration with product managers, designers, and cross-functional teams; (5) agile development experience and end-to-end ownership of features; (6) explicit mention of GovCloud/U.S. work eligibility if applicable. Add a concise summary at the top that maps your experience to Keeper\u2019s responsibilities (design, develop, and maintain secure, scalable support tools on AWS) and include certifications or trainings that support the role. Consider reorganizing to a more traditional full-stack format (Summary \u2192 Key Skills \u2192 Experience \u2192 Education) with bullet points that quantify impact. If you are a U.S. Person, explicitly note citizenship or work eligibility to address GovCloud requirements."
+  },
+  "__MACOSX/._GarrisonLeRockResume.docx": {
+    "description": "here are my resumes",
+    "size": 3481384,
+    "upload_time": "2025-10-04T22:17:38.430997",
+    "upload_timestamp": 1759634258.430997,
+    "processed": false,
+    "uploaded": true,
+    "processing_status": "pending",
+    "job_description": "",
+    "scores": {},
+    "processing_start_time": null,
+    "processing_end_time": null
+  },
+  "unnamed (8).png": {
+    "description": "here are my resumes",
+    "size": 3481384,
+    "upload_time": "2025-10-04T22:17:38.430997",
+    "upload_timestamp": 1759634258.430997,
+    "processed": false,
+    "uploaded": true,
+    "processing_status": "pending",
+    "job_description": "",
+    "scores": {},
+    "processing_start_time": null,
+    "processing_end_time": null
+  },
+  "__MACOSX/._unnamed (8).png": {
+    "description": "here are my resumes",
+    "size": 3481384,
+    "upload_time": "2025-10-04T22:17:38.430997",
+    "upload_timestamp": 1759634258.430997,
+    "processed": false,
+    "uploaded": true,
+    "processing_status": "pending",
+    "job_description": "",
+    "scores": {},
+    "processing_start_time": null,
+    "processing_end_time": null
+  },
+  "localtesting (1).sh": {
+    "description": "here are my resumes",
+    "size": 3481384,
+    "upload_time": "2025-10-04T22:17:38.430997",
+    "upload_timestamp": 1759634258.430997,
+    "processed": false,
+    "uploaded": true,
+    "processing_status": "pending",
+    "job_description": "",
+    "scores": {},
+    "processing_start_time": null,
+    "processing_end_time": null
+  },
+  "__MACOSX/._localtesting (1).sh": {
+    "description": "here are my resumes",
+    "size": 3481384,
+    "upload_time": "2025-10-04T22:17:38.430997",
+    "upload_timestamp": 1759634258.430997,
+    "processed": false,
+    "uploaded": true,
+    "processing_status": "pending",
+    "job_description": "",
+    "scores": {},
+    "processing_start_time": null,
+    "processing_end_time": null
+  },
+  "localtesting.sh": {
+    "description": "here are my resumes",
+    "size": 3481384,
+    "upload_time": "2025-10-04T22:17:38.430997",
+    "upload_timestamp": 1759634258.430997,
+    "processed": false,
+    "uploaded": true,
+    "processing_status": "pending",
+    "job_description": "",
+    "scores": {},
+    "processing_start_time": null,
+    "processing_end_time": null
+  },
+  "__MACOSX/._localtesting.sh": {
+    "description": "here are my resumes",
+    "size": 3481384,
+    "upload_time": "2025-10-04T22:17:38.430997",
+    "upload_timestamp": 1759634258.430997,
     "processed": false,
     "uploaded": true,
     "processing_status": "pending",

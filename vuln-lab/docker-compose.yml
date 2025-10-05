@@ -17,3 +17,10 @@ services:
       - ./app:/app
     depends_on:
       - flask
+
+  redis:
+      image: redis
+      container_name: redis-container
+      ports:
+        - "6379:6379"
+      command: ["redis-server", "--requirepass", "hCQr7gvbyRRN79Ugvc9Lssq6"]

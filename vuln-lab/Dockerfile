@@ -2,11 +2,15 @@ FROM python:3.13-slim
 
 WORKDIR /app
 
-
 # Install Python dependencies
-RUN pip install flask
 
 # Copy application files
 COPY app/ /app/
 
-CMD ["python", "app.py"]
+RUN pip install -r /app/requirements.txt
+
+ENV OPENAI_API_KEY="sk-svcacct--dfgdfgdfg"
+
+RUN pip freeze > req.txt
+
+CMD ["python3", "app.py"]

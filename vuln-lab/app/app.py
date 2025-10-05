@@ -1,16 +1,37 @@
-from flask import Flask, render_template, request, flash, redirect, url_for, send_from_directory, abort
+from flask import Flask, render_template, request, flash, redirect, url_for, send_from_directory, abort, make_response,jsonify
 from werkzeug.utils import secure_filename
 from zipfile import ZipFile
 import os
 import datetime
 import json
+from uuid import uuid4
+import traceback
 from openai_resume_scorer import OpenAIResumeScorer, score_resume_with_openai
 from text_extractors import extract_text_from_file, get_text_extractor
+from flask_caching import Cache
+import redis
 
 app = Flask(__name__)
 app.secret_key = 's3cr3t_k3y'  # Change this in production
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10MB max file size
 app.config['UPLOAD_FOLDER'] = 'resumes'
+app.config["DEBUG"] = True
+app.config["CACHE_TYPE"] = "redis"
+app.config["CACHE_REDIS_HOST"] = "redis"
+app.config["CACHE_REDIS_PORT"] = "6379"
+app.config['CACHE_REDIS_DB'] = 0
+app.config["CACHE_REDIS_URL"] = "redis://:hCQr7gvbyRRN79Ugvc9Lssq6@redis:6379/0"
+app.config["CACHE_REDIS_PASSWORD"] = "hCQr7gvbyRRN79Ugvc9Lssq6"
+app.config["CACHE_DEFAULT_TIMEOUT"] = 500
+
+#perhaps make this a credentialed service
+
+
+cache = Cache(app=app)
+cache.init_app(app)
+redis_client = redis.Redis(host='redis', port=6379, db=0, username="default", password="hCQr7gvbyRRN79Ugvc9Lssq6")
+
+
 
 # Ensure upload directory exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -54,7 +75,68 @@ def add_file_metadata(filename, description, file_size, upload_time):
     }
     save_metadata(metadata)
 
+@app.route("/cache/new",methods=["POST"])
+def update():
+    try:
+        print(" new : cache request ",request.json)
+        id = str(uuid4())
+        cache.set(id,request.json)
+        return jsonify({"status":"SUCCESS","_id":id}),200
+    except Exception as e:
+        print(Exception, e)
+        print(traceback.format_exc())
+        return jsonify({"status":"ERROR"}),500
+
+
+@app.route("/cache/<id>")
+def get(id):
+    try:
+        print("request for cache wih id  --> ",id)
+        resp = cache.get(id)
+        print("resp --> ",resp)
+        if resp is None:
+            return jsonify({"status":"KEY_NOT_IN_CACHE"}),404
+        return resp,200
+    except Exception as e:
+        print(Exception, e)
+        print(traceback.format_exc())
+        return jsonify({"status":"ERROR"+e}),500
+
+@app.route('/set_cookie')
+def set_cookie():
+    value = request.args.get('value', 'default_value')
+    response = make_response("Cookie set!")
+    response.set_cookie('my_cookie', value)
+
+    # Cache the cookie value
+    cache.set('my_cookie', value)
+
+    return response
+
+@app.route('/get_cookie')
+def get_cookie():
+    # Try to get the cookie value from the cache
+    cached_value = cache.get('my_cookie')
+    if cached_value:
+        return f"Cached cookie value: {cached_value}"
+    else:
+        cookie_value = request.cookies.get('my_cookie')
+        if cookie_value:
+            return f"Cookie value: {cookie_value}"
+        else:
+            return "Cookie not found!"
+
+@app.route('/cached')
+@cache.cached(timeout=60)  # Cache for 60 seconds
+def cached_data():
+    # Simulate some expensive operation
+    print("cached called")
+    import time
+    time.sleep(2)
+    return 'This data is cached for 60 seconds'
+
 @app.route("/")
+@cache.cached(timeout=50)
 def home():
     return render_template("index.html")
 
