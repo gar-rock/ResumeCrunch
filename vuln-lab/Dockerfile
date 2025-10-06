@@ -9,7 +9,7 @@ COPY app/ /app/
 
 RUN pip install -r /app/requirements.txt
 
-ENV OPENAI_API_KEY="sk-svcacct--dfgdfgdfg"
+ENV OPENAI_API_KEY="sk-yourkeyhere"
 
 
 CMD ["python3", "app.py"]
