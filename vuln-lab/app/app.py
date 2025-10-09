@@ -11,17 +11,21 @@ from text_extractors import extract_text_from_file, get_text_extractor
 from flask_caching import Cache
 import redis
 
+# get redis password from ENV 
+rpass = os.getenv("REDIS_PASSWORD")
+rserver = os.getenv("REDIS_SERVER")
+
 app = Flask(__name__)
 app.secret_key = 's3cr3t_k3y'  # Change this in production
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10MB max file size
 app.config['UPLOAD_FOLDER'] = 'resumes'
 app.config["DEBUG"] = True
 app.config["CACHE_TYPE"] = "redis"
-app.config["CACHE_REDIS_HOST"] = "redis"
+app.config["CACHE_REDIS_HOST"] = "resumecrunch-redis"
 app.config["CACHE_REDIS_PORT"] = "6379"
 app.config['CACHE_REDIS_DB'] = 0
-app.config["CACHE_REDIS_URL"] = "redis://:hCQr7gvbyRRN79Ugvc9Lssq6@redis:6379/0"
-app.config["CACHE_REDIS_PASSWORD"] = "hCQr7gvbyRRN79Ugvc9Lssq6"
+app.config["CACHE_REDIS_URL"] = f"redis://:{rpass}@resumecrunch-redis:6379/0"
+app.config["CACHE_REDIS_PASSWORD"] = rpass
 app.config["CACHE_DEFAULT_TIMEOUT"] = 500
 
 #perhaps make this a credentialed service
@@ -29,9 +33,7 @@ app.config["CACHE_DEFAULT_TIMEOUT"] = 500
 
 cache = Cache(app=app)
 cache.init_app(app)
-redis_client = redis.Redis(host='redis', port=6379, db=0, username="default", password="hCQr7gvbyRRN79Ugvc9Lssq6")
-
-
+redis_client = redis.Redis(host='resumecrunch-redis', port=6379, db=0, username="default", password=rpass)
 
 # Ensure upload directory exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
