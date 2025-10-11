@@ -13,7 +13,7 @@ import redis
 
 # get redis password from ENV 
 rpass = os.getenv("REDIS_PASSWORD")
-rserver = os.getenv("REDIS_SERVER")
+rserver = os.getenv("REDIS_CONTAINER")
 
 app = Flask(__name__)
 app.secret_key = 's3cr3t_k3y'  # Change this in production
@@ -21,10 +21,10 @@ app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10MB max file size
 app.config['UPLOAD_FOLDER'] = 'resumes'
 app.config["DEBUG"] = True
 app.config["CACHE_TYPE"] = "redis"
-app.config["CACHE_REDIS_HOST"] = "resumecrunch-redis"
+app.config["CACHE_REDIS_HOST"] = rserver
 app.config["CACHE_REDIS_PORT"] = "6379"
 app.config['CACHE_REDIS_DB'] = 0
-app.config["CACHE_REDIS_URL"] = f"redis://:{rpass}@resumecrunch-redis:6379/0"
+app.config["CACHE_REDIS_URL"] = f"redis://:{rpass}@{rserver}:6379/0"
 app.config["CACHE_REDIS_PASSWORD"] = rpass
 app.config["CACHE_DEFAULT_TIMEOUT"] = 500
 
@@ -33,7 +33,7 @@ app.config["CACHE_DEFAULT_TIMEOUT"] = 500
 
 cache = Cache(app=app)
 cache.init_app(app)
-redis_client = redis.Redis(host='resumecrunch-redis', port=6379, db=0, username="default", password=rpass)
+redis_client = redis.Redis(host=rserver, port=6379, db=0, username="default", password=rpass)
 
 # Ensure upload directory exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
